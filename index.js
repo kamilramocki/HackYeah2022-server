@@ -2,8 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-
+const { categoriesRouter } = require('./endpoints/category');
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', './views');
+app.use(bodyParser.urlencoded());
+app.use(express.static('public'));
+
+app.use('/', categoriesRouter);
 
 const start = async () => {
     console.log('Connecting to database...');
@@ -15,4 +22,4 @@ const start = async () => {
     });
 };
 
-start();
+start().catch((e) => console.error('Error while starting application.', e));
