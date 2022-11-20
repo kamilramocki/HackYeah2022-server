@@ -5,7 +5,7 @@ const Test = mongoose.model('Test', {
     questions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
     joinCode: String,
     generationDate: Date,
-    difficulty: String,
+    level: String,
 });
 
 module.exports = { Test };
