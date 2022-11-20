@@ -9,13 +9,13 @@ testsRouter.post('/tests/:id/submit', async (req, res) => {
     });
 
     let points = 0;
-
     const submittedAnswers = req.body;
 
     for(const question of questions) {
         const submittedAnswerIndex = submittedAnswers[question._id];
         if (submittedAnswerIndex) {
             const answer = question.answers[submittedAnswerIndex];
+
             if (answer.valid) {
                 points++;
             }
@@ -24,7 +24,7 @@ testsRouter.post('/tests/:id/submit', async (req, res) => {
 
     const respond = {
         correct: points,
-        available: submittedAnswers.length,
+        available: questions.length,
     };
 
     res.json(respond);
