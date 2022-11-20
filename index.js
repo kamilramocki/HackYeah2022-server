@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const { categoriesRouter } = require('./endpoints/category');
 const { questionsRouter } = require('./endpoints/question');
+const { testsRouter } = require('./endpoints/test');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -13,6 +14,7 @@ app.use(express.static('public'));
 
 app.use(categoriesRouter);
 app.use(questionsRouter);
+app.use(testsRouter);
 
 const start = async () => {
     console.log('Connecting to database...');
