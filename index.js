@@ -7,10 +7,7 @@ const { questionsRouter } = require('./endpoints/question');
 const { testsRouter } = require('./endpoints/test');
 const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', './views');
 app.use(bodyParser.json());
-app.use(express.static('public'));
 
 app.use(categoriesRouter);
 app.use(questionsRouter);
